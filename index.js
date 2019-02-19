@@ -143,7 +143,7 @@ server.post('/admin_register', (req, res) => {
     dbUsers('users')
     .insert(newUser)
     .then(ids => {
-      db('users')
+      dbUsers('users')
         .where({ id: ids[0] })
         .first()
         .then(newUser => {
