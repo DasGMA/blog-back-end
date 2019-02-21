@@ -15,11 +15,7 @@ require('dotenv').config();
 const usersRouter = require('./db/Routers/User.js');
 const postsRouter = require('./db/Routers/Post.js');
 
-server.get('/', (req, res) => {
-    res.send('API running....')
-});
-
 server.use('/users', usersRouter);
 server.use('/posts', postsRouter);
 
-server.listen(port, () => console.log(`Running on ${port}.....`));
+server.listen(port, () => console.log(`Running on port ${port}`));

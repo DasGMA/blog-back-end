@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 const db = require('../helpers/userDb');
+const dbUsers = require('../dbConfig.js');
 
 const secret = 'secret';
 
@@ -59,7 +60,7 @@ router.post('/admin_register', (req, res) => {
 router.post('/admin_login', (req, res) => {
     const creds = req.body;
 
-    db('users')
+    dbUsers('users')
         .where({username: creds.username})
         .first()
         .then(user => {
@@ -76,8 +77,6 @@ router.post('/admin_login', (req, res) => {
         })
 })
 
-
-
 router.get('/', (req, res) => {
 
     db.get()
@@ -87,7 +86,6 @@ router.get('/', (req, res) => {
     .catch(error => {
         res.status(500).json(console.error( 'Error getting users list ', error ));
     })
-
 })
 
 router.get('/:id', (req, res) => {
