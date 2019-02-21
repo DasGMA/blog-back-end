@@ -7,7 +7,7 @@ module.exports = {
     if (id) {
       query
         .join('users as u', 'p.userId', 'u.id')
-        .select('p.category', 'p.title', 'p.content', 'u.username as postedBy')
+        .select('p.category', 'p.title', 'p.content', 'p.created_at', 'p.updated_at', 'u.username as postedBy')
         .where('p.id', id);
 
       const promises = [query, this.getPostTags(id)]; // [ posts, tags ]
