@@ -5,8 +5,8 @@
   "repository": "https://github.com/DasGMA/blog-back-end.git",
   "author": "dasgma <dasgrigoma@gmail.com>",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
