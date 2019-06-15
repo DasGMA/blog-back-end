@@ -37,7 +37,7 @@ function protected(req, res, next) {
             }
         })
     } else {
-        return res.status(400).json({ Message: 'No token found' })
+        return res.status(400).json({ Message: 'No token found' });
     }
 }
 

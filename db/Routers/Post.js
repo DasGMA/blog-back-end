@@ -2,6 +2,26 @@ const express = require('express');
 const router = express.Router();
 
 const db = require('../helpers/postDb');
+const secret = 'secret';
+
+// ####### Protected middleware ##########
+function protected(req, res, next) {
+    const token = req.headers.authorization;
+    if (token) {
+        jwt.verify(token, secret, (error, decodedToken) => {
+            if (error) {
+                return res
+                    .status(400)
+                    .json({ Message: ' Invalid token' })
+            } else {
+                req.user = { username: decodedToken.username }
+            next()
+            }
+        })
+    } else {
+        return res.status(400).json({ Message: 'No token found' });
+    }
+}
 
 // Request to get all posts 
 router.get('/', (req, res)=> {
@@ -30,7 +50,7 @@ router.get('/:id', (req, res)=> {
 
 
 // Request to add new post
-router.post('/add', (req, res) => {
+router.post('/add', protected, (req, res) => {
     const post = req.body
 
     db.insert(post)

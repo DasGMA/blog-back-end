@@ -1,6 +1,7 @@
 {
   "name": "Blog-back-end",
   "version": "1.0.0",
+  "license": "MIT",
   "main": "index.js",
   "repository": "https://github.com/DasGMA/blog-back-end.git",
   "author": "dasgma <dasgrigoma@gmail.com>",
